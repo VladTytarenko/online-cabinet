@@ -1,0 +1,2 @@
+ Online cabinet   
+Business logic and frontend for online cabinet. The online cabinet can be used by two types of user: administrator and common user. The cabinet includes login from. All users have the opportunity to review information about others. Administrator have unique functions for updating, adding, deleting users. The project was developed by using Spring Framework, Spring MVC and Spring JDBC.
