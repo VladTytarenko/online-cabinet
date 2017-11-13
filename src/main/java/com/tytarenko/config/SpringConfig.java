@@ -1,5 +1,7 @@
 package com.tytarenko.config;
 
+import com.tytarenko.service.UserService;
+import com.tytarenko.service.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,8 +10,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
+
 @Configuration
-@ComponentScan(basePackages = {"com.tytarenko.service", "com.tytarenko.dao"})
+@ComponentScan(basePackages = "com.tytarenko.dao")//, "com.tytarenko.service"})
 public class SpringConfig {
 
     @Bean
@@ -35,8 +38,9 @@ public class SpringConfig {
         return new UserDaoImpl(getJdbcTemplate());
     }*/
 
-    /*@Bean
+    @Bean
     public UserService getUserService() {
         return new UserServiceImpl();
-    }*/
+    }
+
 }

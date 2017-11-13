@@ -1,7 +1,10 @@
+com/tytarenko/entity/User.class
 com/tytarenko/dao/UserDao.class
+com/tytarenko/service/SecurityServiceImpl.class
+com/tytarenko/service/UserServiceImpl.class
+com/tytarenko/entity/UserType.class
 com/tytarenko/config/SpringConfig.class
 com/tytarenko/config/WebConfig.class
-com/tytarenko/App.class
-com/tytarenko/sevice/TestBean.class
-com/tytarenko/controller/UserController.class
-com/tytarenko/sevice/UserService.class
+com/tytarenko/service/SecurityService.class
+com/tytarenko/service/UserService.class
+com/tytarenko/service/UserDetailsServiceImpl.class

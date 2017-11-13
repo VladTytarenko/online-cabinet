@@ -1,31 +1,37 @@
 package com.tytarenko.controller;
 
 import com.tytarenko.entity.User;
+import com.tytarenko.service.SecurityService;
 import com.tytarenko.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller for {@link User}'s pages/
+ *
+ * @author Vladyslav Tytarenko
+ * @version 1.0
+ */
+
 @Controller
 @RequestMapping("/")
 public class UserController {
 
     @Autowired
-    public UserService userService;
+    private UserService userService;
 
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
+    @Autowired
+    private SecurityService securityService;
 
     @GetMapping("/hello")
     public String hello() {
         return "hello";
     }
 
-    @GetMapping("/users")
-    public String getAllUsers(Model model) {
+    @GetMapping("/users+{id}")
+    public String getAllUsers(@PathVariable("id") int id, Model model) {
         model.addAttribute("users", userService.findAll());
         return "usersList";
     }
@@ -69,6 +75,19 @@ public class UserController {
     public String updateUser(@ModelAttribute User user) {
         userService.update(user);
         return "redirect:/user/" + user.getId() ;
+    }
+
+    @GetMapping("/login")
+    public String login(Model model, String logout) {
+        if (logout != null) {
+            model.addAttribute("error", "Logged out successfully.");
+        }
+        return "login";
+    }
+
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        return "admin";
     }
 
 }

@@ -29,4 +29,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         freeMarkerConfigurer.setTemplateLoaderPaths("/", "/WEB-INF/views/");
         return freeMarkerConfigurer;
     }
+
 }

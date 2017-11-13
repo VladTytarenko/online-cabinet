@@ -3,21 +3,22 @@ package com.tytarenko.service;
 import com.tytarenko.dao.UserDao;
 import com.tytarenko.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service // бізнес логіка, наприклад: валідація, перевірки і т.д.
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    public UserDao userDao;
-    //можливо додатково робить autowired іншого сервісу
+    private UserDao userDao;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void save(User user) throws Exception {
-        if (user.getName().length() < 2)
-            throw new Exception();
-
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.save(user);
     }
 
@@ -25,15 +26,21 @@ public class UserServiceImpl implements UserService {
         return userDao.getById(id);
     }
 
+    public User getByLogin(String login) {
+        return userDao.getByLogin(login);
+    }
+
     public List<User> findAll() {
         return userDao.findAll();
     }
 
     public void update(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.update(user);
     }
 
     public void delete(int id) {
         userDao.delete(id);
     }
+
 }

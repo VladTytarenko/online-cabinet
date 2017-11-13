@@ -10,6 +10,8 @@ public interface UserDao {
 
     User getById(int id);
 
+    User getByLogin(String login);
+
     List<User> findAll();
 
     void update(User user);

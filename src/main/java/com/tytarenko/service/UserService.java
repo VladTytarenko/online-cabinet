@@ -10,11 +10,12 @@ public interface UserService {
 
     User getById(int id);
 
+    User getByLogin(String login);
+
     List<User> findAll();
 
     void update(User user);
 
     void delete(int id);
-
 
 }

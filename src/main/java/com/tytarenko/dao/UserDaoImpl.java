@@ -7,11 +7,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    public final JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public UserDaoImpl(JdbcTemplate jdbcTemplate) {
@@ -25,8 +26,12 @@ public class UserDaoImpl implements UserDao {
 
     public User getById(int id) {
         String sql = "SELECT * FROM user WHERE id=?";
-
         return jdbcTemplate.queryForObject(sql, new UserMapper(), id);
+    }
+
+    public User getByLogin(String login) {
+        String sql = "SELECT * FROM user WHERE login=?";
+        return jdbcTemplate.queryForObject(sql, new UserMapper(), login);
     }
 
     public List<User> findAll() {
@@ -43,4 +48,9 @@ public class UserDaoImpl implements UserDao {
         String sql = "DELETE FROM user WHERE id=?";
         jdbcTemplate.update(sql, id);
     }
+
+    /*public Map<String, String> getLoginAndPassword() {
+        String sql = "SELECT login, password FROM user";
+        return jdbcTemplate.update(sql, new LoginMapper());
+    }*/
 }

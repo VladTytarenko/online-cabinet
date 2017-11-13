@@ -3053,16 +3053,32 @@
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="679" parent="68" name="user_id_uindex">
+    <column id="679" parent="68" name="role">
+      <Position>5</Position>
+      <DataType>enum(&apos;admin&apos;, &apos;user&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;user&apos;</DefaultExpression>
+    </column>
+    <column id="680" parent="68" name="login">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="681" parent="68" name="password">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="682" parent="68" name="user_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="680" parent="68" name="PRIMARY">
+    <key id="683" parent="68" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="681" parent="68" name="user_id_uindex">
+    <key id="684" parent="68" name="user_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>user_id_uindex</UnderlyingIndexName>
     </key>
